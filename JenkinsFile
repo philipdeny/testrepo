@@ -1,0 +1,12 @@
+node {
+    
+    stage('SCM'){
+        git clone https://github.com/philipdeny/testrepo.git
+    }
+    stage('build the package'){
+        sh 'mvn package'
+    }
+    stage('archival'){
+        archiveArtifacts 'target/surefire-reports/*.xml'
+    }
+}
